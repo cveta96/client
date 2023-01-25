@@ -17,7 +17,7 @@ const App = () => {
         <Route element={<RequireAuth />}>
           <Route path='home' element={<Home />}>
             <Route path='ecommerce' element={'oke'} />
-            <Route path='orders' element={<div>'orders'</div>} />
+            <Route path='orders' element={'orders'} />
           </Route>
         </Route>
       </Routes>
