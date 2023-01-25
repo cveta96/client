@@ -18,6 +18,7 @@ const App = () => {
           <Route path='home' element={<Home />}>
             <Route path='ecommerce' element={'oke'} />
             <Route path='orders' element={'orders'} />
+            <Route path='customers' element={'customers'} />
           </Route>
         </Route>
       </Routes>
