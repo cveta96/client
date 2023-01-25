@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import './App.css';
 
-function App() {
+// Test prot routes
+import RequireAuth from './data/RequireAuth';
+import Home from './pages/Home';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={'HOME'} />
+        <Route path='login' element={'LOGIN'} />
+        {/* protected routes */}
+        <Route element={<RequireAuth />}>
+          <Route path='home' element={<Home />}>
+            <Route path='ecommerce' element={'oke'} />
+            <Route path='orders' element={<div>'orders'</div>} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
