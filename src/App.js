@@ -5,13 +5,13 @@ import './App.css';
 
 // Test prot routes
 import RequireAuth from './data/RequireAuth';
-import { Home, Login, Register } from './pages/';
+import { Home, Login, Register, Landing } from './pages/';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={'HOME'} />
+        <Route path='/' element={<Landing />} />
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />
         {/* protected routes */}
