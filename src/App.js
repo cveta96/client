@@ -1,13 +1,36 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './App.css';
 
-// Test prot routes
+// Test prot routes #it works
 import RequireAuth from './data/RequireAuth';
 import { Home, Login, Register, Landing } from './pages/';
 
+//test current user and jwt cookie
+import { useDispatch } from 'react-redux';
+import { setCredentials } from './slices/authSlice';
+import { useCheckMutation } from './api/authApiSlice';
+
 const App = () => {
+  const [check] = useCheckMutation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const userData = await check().unwrap();
+        console.log(userData);
+        dispatch(setCredentials({ ...userData }));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    checkUser();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>

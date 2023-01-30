@@ -3,8 +3,18 @@ import { FiSettings } from 'react-icons/fi';
 import { Outlet } from 'react-router-dom';
 import { Navbar, Footer, Sidebar, ThemeSettings } from '../components';
 
+//redux
+import { selectCurrentUser, selectCurrentToken } from '../slices/authSlice';
+import { useSelector } from 'react-redux';
+
 import { useStateContext } from '../contexts/ContextProvider';
 const Home = () => {
+  //redux
+  const user = useSelector(selectCurrentUser);
+  const token = useSelector(selectCurrentToken);
+
+  console.log(`${user} and ${token}`);
+
   const {
     setCurrentColor,
     setCurrentMode,
