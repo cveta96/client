@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 
 import { ContextProvider } from './contexts/ContextProvider';
 
+import { BrowserRouter } from 'react-router-dom';
+
 import { store } from './store';
 import { Provider } from 'react-redux';
 
@@ -15,7 +17,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ContextProvider>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ContextProvider>
     </Provider>
   </React.StrictMode>
