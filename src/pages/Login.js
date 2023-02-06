@@ -96,17 +96,19 @@ const Login = () => {
     */}
       {/* new form*/}
       <div className='relative flex flex-col justify-center min-h-screen overflow-hidden'>
-        <div className='te w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl'>
+        <div className='te w-full p-6 m-auto bg-main-bg rounded-md shadow-xl lg:max-w-xl'>
           <h1 className='text-3xl font-semibold text-center text-purple-700 uppercase'>
             Log in
           </h1>
 
-          <span className='text-red-500'>{errMsg}</span>
+          <span ref={errRef} className='text-red-500'>
+            {errMsg}
+          </span>
 
           <form className='mt-6' onSubmit={handleSubmit}>
             <div className='mb-2'>
               <label
-                for='email'
+                htmlFor='email'
                 className='block text-sm font-semibold text-gray-800'
               >
                 Username
@@ -124,7 +126,7 @@ const Login = () => {
             </div>
             <div className='mb-2'>
               <label
-                for='password'
+                htmlFor='password'
                 className='block text-sm font-semibold text-gray-800'
               >
                 Password
