@@ -1,7 +1,11 @@
 import React from 'react';
 import {
+  HiDocumentAdd,
+  HiDocumentText,
+  HiDocumentSearch,
+} from 'react-icons/hi';
+import {
   AiOutlineCalendar,
-  AiOutlineShoppingCart,
   AiOutlineAreaChart,
   AiOutlineBarChart,
   AiOutlineStock,
@@ -24,8 +28,7 @@ import {
   BsChatLeft,
 } from 'react-icons/bs';
 import { BiColorFill } from 'react-icons/bi';
-import { IoMdContacts } from 'react-icons/io';
-import { RiContactsLine, RiStockLine } from 'react-icons/ri';
+import { RiStockLine } from 'react-icons/ri';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import { HiOutlineRefresh } from 'react-icons/hi';
 import { TiTick } from 'react-icons/ti';
@@ -520,19 +523,19 @@ export const links = [
   },
 
   {
-    title: 'Pages',
+    title: 'Items',
     links: [
       {
-        name: 'orders',
-        icon: <AiOutlineShoppingCart />,
+        name: 'new',
+        icon: <HiDocumentAdd />,
       },
       {
-        name: 'employees',
-        icon: <IoMdContacts />,
+        name: 'list',
+        icon: <HiDocumentSearch />,
       },
       {
-        name: 'customers',
-        icon: <RiContactsLine />,
+        name: 'edit',
+        icon: <HiDocumentText />,
       },
     ],
   },

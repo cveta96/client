@@ -6,7 +6,15 @@ import './App.css';
 
 // Test prot routes #it works
 import RequireAuth from './data/RequireAuth';
-import { Home, Login, Register, Landing } from './pages/';
+import {
+  Home,
+  Login,
+  Register,
+  Landing,
+  Items,
+  NewItem,
+  EditItem,
+} from './pages/';
 
 //test current user and jwt cookie
 import { useDispatch } from 'react-redux';
@@ -42,9 +50,10 @@ const App = () => {
       {/* protected routes */}
       <Route element={<RequireAuth />}>
         <Route path='home' element={<Home />}>
-          <Route path='ecommerce' element={'oke'} />
-          <Route path='orders' element={'orders'} />
-          <Route path='customers' element={'customers'} />
+          <Route path='ecommerce' element={'ecommerce'} />
+          <Route path='new' element={<NewItem />} />
+          <Route path='list' element={<Items />} />
+          <Route path='edit' element={<EditItem />} />
         </Route>
       </Route>
     </Routes>

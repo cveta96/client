@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { CiLogout } from 'react-icons/ci';
 import { FiShoppingCart } from 'react-icons/fi';
 import { BsChatLeft } from 'react-icons/bs';
 import { RiNotification3Line } from 'react-icons/ri';
@@ -9,6 +10,11 @@ import { Tooltip } from 'react-tooltip';
 import avatar from '../data/avatar.jpg';
 import { Cart, Chat, Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
+
+import { useLogoutMutation } from '../api/authApiSlice';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../slices/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <div>
@@ -41,6 +47,10 @@ const Navbar = () => {
     screenSize,
   } = useStateContext();
 
+  const [logout] = useLogoutMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
 
@@ -62,6 +72,12 @@ const Navbar = () => {
   }, [screenSize]);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
+
+  const logoutUser = () => {
+    logout();
+    dispatch(logOut());
+    navigate('/');
+  };
 
   return (
     <div className='flex justify-between p-2 md:ml-6 md:mr-6 relative'>
@@ -92,6 +108,17 @@ const Navbar = () => {
           color={currentColor}
           icon={<RiNotification3Line />}
         />
+        <button
+          id='logout'
+          data-tooltip-content='Logout'
+          type='button'
+          onClick={logoutUser}
+          style={{ background: currentColor }}
+          className='relative text-xl rounded-full p-3 hover:bg-light-gray'
+        >
+          <Tooltip anchorId='logout'></Tooltip>
+          <CiLogout />
+        </button>
         <div>
           <div
             className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg'
