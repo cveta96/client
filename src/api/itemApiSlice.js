@@ -53,12 +53,3 @@ export const newItemApiSlice = apiSlice.injectEndpoints({
 });
 
 export const { useNewItemMutation } = newItemApiSlice;
-
-/*
-export const {
-  useGetItemsQuery,
-  useNewItemMutation,
-  useUpdateItemMutation,
-  useDeleteItemMutation,
-} = apiSlice;
-*/
